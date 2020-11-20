@@ -1,0 +1,20 @@
+
+.card-details {
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+.card-img-top {
+    /* max-height: 120px; */
+    width: 48px !important;
+    height: 186.7px !important;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.card-text {
+    max-width: 100%;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
