@@ -1,55 +1,119 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import AuthService from '../../services/auth.service'
+
 
 class Header extends React.Component{
+
+    state = {
+        username: '',
+        email: ''
+    }
+    
+
+    
+
+
+    componentDidMount() {
+        
+        let user = JSON.parse(localStorage.getItem('user'));
+        if(user) {
+            this.setState({
+                username: user.username,
+                email: user.email
+            }) 
+        }
+    }
+
+    logOut() {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        this.props.history.push("/signin");
+        
+    }
+
+
     render(){
-        return( 
+
+        console.log(this.state.username)
+
+        return (
             
+            <nav className="navbar navbar-expand navbar-dark bg-dark">
+                {this.state.username !== '' ? (
+                <div className="navbar-nav">
+            <div className="navbar-nav mr-auto">
+              <Link to={"/"} className="navbar-brand">
+            BeersApp 
+          </Link>
+          <div className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to={"/home"} className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+                <Link to={"/beers"} className="nav-link">
+                  Beers
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/addbeer"} className="nav-link">
+                  Add Beer
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/beer/:beerId"} className="nav-link">
+                  Random Beer
+                </Link>
+              </li>
 
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">World Beers Cheers!</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <Link class="nav-link" to="/">Home </Link>
+            {this.state.username  && (
+              <li className="nav-item">
+                <Link to={"/user"} className="nav-link">
+                  Hi,  {this.state.username}
+                </Link>
+              </li>
+            )}
+              </div>
+              {/* <li className="nav-item">
+                <Link to={"/profile"} className="nav-link">
+                  {this.state.currentUser.username}
+                </Link>
+              </li> */}
+              
+            </div>
+              
+                  <div className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                    <a href="/signin" className="nav-link" onClick={this.logOut}>
+                      LogOut
+                    </a>
                     </li>
-                    <li class="nav-item">
-                        <Link class="nav-link" to="/beers">Beer List</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link class="nav-link" to="/addbeer">Add Beer</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link class="nav-link" to="/random">Random Beer</Link>
-                    </li>
-                    
-                    
-                    </ul>
-                    <div class="form-inline my-2 my-lg-0">
-                    {/* <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
-                    <div className="container">
-          
-                        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                            <ul className="navbar-nav ml-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link" to={"/sign-in"}>Sign in</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
-                            </li>
-                            </ul>
-                        </div>
-                        </div>
                     </div>
-                </div>
-                </nav>
+            </div>
+            
+          ) : (
+            <div className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to={"/signin"} className="nav-link">
+                  Login
+                </Link>
+              </li>
 
+              <li className="nav-item">
+                <Link to={"/signup"} className="nav-link">
+                  Sign Up
+                </Link>
+              </li>
+            </div>
+          )}
+        </nav>
+
+                
         )
+       
+        
     }
 }
 

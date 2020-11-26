@@ -1,12 +1,17 @@
 import React from 'react'
-// import Header from '../Header/Header'
-// import BeerList from '../BeerList/BeerList'
+import Login from '../Login/Login'
+import Signup from '../Register/Register'
+import Navigation from '../Navigation/Navigation'
 
 
 class Home extends React.Component {
+  constructor(props){
+    super(props)
+  }
   render () {
     return (
-      <div className="">
+
+     <div className="card lg-col-2">
       <div id="carouselExampleCaptions" className="carousel-fade modal-lg mx-auto w-50 h-25" data-ride="carousel">
   <ol className="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" className="active"></li>
@@ -44,11 +49,9 @@ class Home extends React.Component {
     <span className="carousel-control-next-icon" aria-hidden="true"></span>
     <span className="sr-only">Next</span>
   </a>
-</div>
-</div>
-     
-
-    
+    </div>
+  </div>
+  
 
     )
   }

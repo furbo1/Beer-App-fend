@@ -57,6 +57,7 @@ render(){
                            
                             <Link to={`/beer/${val._id}`}>
                                 <BeerCard 
+                                    key={i}
                                     name={val.beerName}
                                     image={val.beerPicture}
                                     description={val.beerDescription}
@@ -65,8 +66,10 @@ render(){
                             </Link>
                         </div>
                     )
-            })
-            } 
+                        }
+            
+            )
+                    }
         </div>
     )
 }
