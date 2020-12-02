@@ -1,0 +1,19 @@
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-title {
+    color: black;
+}
+
+.card-text {
+    color: black;
+}
+
+.btn:hover {
+    color: black;
+    transform: scale(1.02);
+}

@@ -35,7 +35,14 @@ class AuthService {
         return JSON.parse(localStorage.getItem('user'));
     }
 
+    
+
 }
 
 export default new AuthService();
+
+export const isAuthenticated = () => {
+    let token = JSON.parse(localStorage.getItem('token'));
+    return token ? true : false
+}
 

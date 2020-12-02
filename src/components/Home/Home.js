@@ -1,7 +1,8 @@
 import React from 'react'
 import Login from '../Login/Login'
 import Signup from '../Register/Register'
-import Navigation from '../Navigation/Navigation'
+import Header from '../Header/Header';
+import './Home.css'
 
 
 class Home extends React.Component {
@@ -10,9 +11,11 @@ class Home extends React.Component {
   }
   render () {
     return (
-
-     <div className="card lg-col-2">
-      <div id="carouselExampleCaptions" className="carousel-fade modal-lg mx-auto w-50 h-25" data-ride="carousel">
+      <div>
+        <h1>Welcome to the world's largest beer menu!</h1>
+     <div className="container">
+       
+      <div id="carouselExampleCaptions" className="carousel-fade modal-lg mx-auto" data-ride="carousel" data-interval="2000">
   <ol className="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" className="active"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -20,39 +23,39 @@ class Home extends React.Component {
   </ol>
   <div className="carousel-inner">
     <div className="carousel-item active">
-      <img src="https://images.pexels.com/photos/1089930/pexels-photo-1089930.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" className="d-block w-100" alt="..."/>
-      <div className="carousel-caption d-none d-md-block">
+      <img src="https://cdn.pixabay.com/photo/2016/09/14/11/49/beer-1669295__480.png" className="d-block w-100 mx-auto" alt="..."/>
+      {/* <div className="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </div>
+      </div> */}
     </div>
     <div className="carousel-item">
-      <img src="https://images.pexels.com/photos/1727829/pexels-photo-1727829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" className="d-block w-100" alt="..."/>
-      <div className="carousel-caption d-none d-md-block">
+      <img src="https://cdn.pixabay.com/photo/2016/09/14/11/35/beer-1669273__480.png" className="d-block w-100 mx-auto" alt="..."/>
+      {/* <div className="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
+      </div> */}
     </div>
     <div className="carousel-item">
-      <img src="https://images.pexels.com/photos/4022456/pexels-photo-4022456.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" className="d-block w-100" alt="..."/>
-      <div className="carousel-caption d-none d-md-block">
+      <img src="https://cdn.pixabay.com/photo/2020/03/17/11/43/beer-4939915__480.png" className="d-block w-100 mx-auto" alt="..."/>
+      {/* <div className="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-      </div>
+      </div> */}
     </div>
   </div>
-  <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+  {/* <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
     <span className="sr-only">Previous</span>
   </a>
   <a className="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
     <span className="carousel-control-next-icon" aria-hidden="true"></span>
     <span className="sr-only">Next</span>
-  </a>
+  </a> */}
     </div>
   </div>
   
-
+</div>
     )
   }
 }

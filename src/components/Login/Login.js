@@ -3,6 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from '../../services/auth.service';
+import { Redirect } from 'react-router-dom';
 import './Login.css'
 
 const required = value => {
@@ -59,7 +60,8 @@ export default class Login extends Component {
             //let history = useHistory();
             // history.push("/beers")
             
-            this.props.history.push("/beers");
+            //return <Redirect to={ {pathname: "/beers"}}/>;
+            window.location.href="/";
             // window.location.reload();
           
         },
@@ -88,7 +90,7 @@ export default class Login extends Component {
     return (
         <div className="outer">
       <div className="col-md-12 inner">
-        <div className="card card-container">
+        <div className="card card-container-log">
           {/* <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
@@ -127,7 +129,7 @@ export default class Login extends Component {
 
             <div className="form-group">
               <button
-                className="btn btn-primary btn-block"
+                className="btn btn-block"
                 disabled={this.state.loading}
               >
                 {this.state.loading && (

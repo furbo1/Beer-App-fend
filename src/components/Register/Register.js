@@ -124,7 +124,7 @@ export default class Register extends Component {
     return (
       <div className="outer">
       <div className="col-md-6 inner">
-        <div className="card card-container">
+        <div className="card card-container-reg">
           {/* <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
@@ -176,7 +176,7 @@ export default class Register extends Component {
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Sign Up</button>
+                  <button className="btn btn-block">Sign Up</button>
                 </div>
               </div>
             )}

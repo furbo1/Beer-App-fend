@@ -1,0 +1,24 @@
+.container {
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: #f5b543;
+}
+
+#carouselExampleCaptions {
+    margin-top: 100px;
+}
+
+.carousel-indicators{
+    margin-top: 0;
+}
+
+.carousel-item {
+    margin-left: 15px;
+    margin-bottom: 0;
+}

@@ -1,14 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
 import 'tachyons';
+import { BrowserRouter as Router, Switch, Link, Redirect ,Route } from "react-router-dom";
+import Home from './components/Home/Home';
+import BeerList from './components/BeerList/BeerList';
+import BeerDetails from './components/BeerDetails/BeerDetails';
+import NewBeer from './components/NewBeer/NewBeer';
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import { isAuthenticated } from '../src/services/auth.service';
 
-ReactDOM.render( <BrowserRouter>
-    <App />
-    </BrowserRouter>,
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={{ pathname: "/signin", state: { from: props.location } }} />
+      )
+    }
+  />
+);
+
+ReactDOM.render( 
+    <Router>
+        <App>
+            <Switch>
+                <PrivateRoute exact path="/" component={Home} />
+                <Route path="/signin" component={Login} />
+                <Route path="/signup" component={Register} />
+                <PrivateRoute  path="/beers" component={BeerList} />
+                <PrivateRoute  path="/addbeer" component={NewBeer} />
+                <PrivateRoute path="/beer/:beerId" component={BeerDetails}/> 
+            </Switch>
+        </App>
+    </Router>,
     document.getElementById('root')
 );
 

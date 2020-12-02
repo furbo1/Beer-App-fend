@@ -29,11 +29,13 @@ class BeerList extends React.Component {
         })
 
         //EX: GET: "/search?name=Beer1&size=2l"
-        axios.delete("https://ih-beers-api2.herokuapp.com/beers/search?q="+filterValue)
+        axios.get("http://localhost:4004/beer/filter?beerName="+filterValue)
         .then(res => {
             this.setState({
                 beerList:res.data,
             })
+        }, err => {
+            console.log("An error has occurred!")
         })
     }
 
@@ -42,18 +44,29 @@ render(){
     
 
     return(
-        <div>
-             <input
-                                placeholder="Filter by name"
-                                name='tagline' className="form-control"
-                                onChange={this.handleChange}
-                                value={this.state.filter}
-                            />
+        <div className="container">
+            <nav className="navbar navbar-light bg-light">
+                <form className="col-sm-12">
+                    <input className="form-control input-100" 
+                    type="search" 
+                    placeholder="Search for your favorite beer! Cheers!" 
+                    aria-label="Search"
+                    name='tagline' 
+                    onChange={this.handleChange}
+                    value={this.state.filter}
+                    />
+                </form>
+            </nav>
+       
+            
+            <br/>
+                <div className="card-group m-auto">
+             
             {
                 
                 this.state.beerList.map((val,i)=>{
                     return (
-                        <div className="beer-card">
+                        <div className="card m-2">
                            
                             <Link to={`/beer/${val._id}`}>
                                 <BeerCard 
@@ -63,13 +76,17 @@ render(){
                                     description={val.beerDescription}
                                     contributed_by={val.beerAlc}
                                 />
+                               
                             </Link>
+                           
                         </div>
                     )
                         }
             
             )
                     }
+
+            </div>
         </div>
     )
 }

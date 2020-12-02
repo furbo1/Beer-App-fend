@@ -1,10 +1,26 @@
 .post {
-  float: left;
+  /* float: left; */
   width: 80%;
   margin: 10%;
   margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title-form {
   text-align: center;
+  color: #f5b543;
+}
+
+.btn {
+  color: black;
+  background-color: #f5b543;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+  color: brown;
+
 }

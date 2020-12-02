@@ -8,7 +8,8 @@ class NewBeer extends React.Component {
         beerDescription:"",
         beerPicture:"",
         beerAlc:"",
-        beerVotes:""
+        beerVotes:"",
+        file: ""
     }
     
     handleCreate = () =>{
@@ -33,12 +34,28 @@ class NewBeer extends React.Component {
       console.log(change)
       this.setState(change)
     }
+    handleFile = e =>{
+      let reader = new FileReader();
+      if(e.target.files && e.target.files.length > 0){
+          let file = e.target.files[0];
+          if(file.size <= 1000000){
+            reader.readAsDataURL(file)
+            reader.onload = () => {
+              this.setState({
+                file: "data:"+ file.type + ";base64, " + reader.result.split(',')[1]
+              
+              })
+              console.log(this.state.file)
+            }
+          }
+      }
+    }
     
     
     render(){
         
             return (
-                <div className="post">
+                <div className="post justify-center align-content-center">
                   <h2 className="title-form">Create a new beer!</h2> 
                   <form className="post" >
                     <div className="form-group">
@@ -68,11 +85,17 @@ class NewBeer extends React.Component {
                         placeholder="Votes" name="beerVotes" className="form-control"  onChange={this.handleChange} value={this.state.beerVotes}
                       />
                     </div>
+                    <div className="form-group">
+                      <input 
+                      type="file"
+                        placeholder="Votes" name="beerVotes" className="form-control"  onChange={this.handleFile} 
+                      />
+                    </div>
       
                     
                     
                   
-                    <button type="button" className="btn btn-primary" onClick={this.handleCreate}>Create Beer</button>
+                    <button type="button" className="btn" onClick={this.handleCreate}>Create Beer</button>
                     <p>
 
                     </p>
