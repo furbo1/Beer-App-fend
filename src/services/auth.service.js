@@ -17,7 +17,7 @@ class AuthService {
             return res;
         })
     }
-
+    
     logout(){
         localStorage.removeItem("user");
         localStorage.removeItem("token");
@@ -30,6 +30,17 @@ class AuthService {
             password
         });
     }
+    confirmResetPassword(code, email, newPassword){
+        return axios.post(API_URL + "confirm-reset-password", {
+            code:code,
+            email: email,
+            password: newPassword
+        });
+    }
+
+    
+
+    
 
     getCurrentUser(){
         return JSON.parse(localStorage.getItem('user'));

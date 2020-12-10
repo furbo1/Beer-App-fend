@@ -3,7 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from '../../services/auth.service';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './Login.css'
 
 const required = value => {
@@ -88,9 +88,10 @@ export default class Login extends Component {
 
   render() {
     return (
-        <div className="outer">
+        <div className="outer justify-center align-content-center">
+          <h2 className="title-form">Login to order your favorite beers!</h2>
       <div className="col-md-12 inner">
-        <div className="card card-container-log">
+        <div className="card-container-log">
           {/* <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
@@ -109,6 +110,7 @@ export default class Login extends Component {
                 type="text"
                 className="form-control"
                 name="username"
+                placeHolder="Enter your user name"
                 value={this.state.username}
                 onChange={this.onChangeUsername}
                 validations={[required]}
@@ -121,13 +123,14 @@ export default class Login extends Component {
                 type="password"
                 className="form-control"
                 name="password"
+                placeHolder="Enter your password"
                 value={this.state.password}
                 onChange={this.onChangePassword}
                 validations={[required]}
               />
             </div>
 
-            <div className="form-group">
+            < div className="form-group">
               <button
                 className="btn btn-block"
                 disabled={this.state.loading}
@@ -137,6 +140,16 @@ export default class Login extends Component {
                 )}
                 <span>Login</span>
               </button>
+              <button
+                className="btn btn-block btn-redirect"
+               
+              >
+              
+              <Link to="/reset-password">
+               Forgot password?
+              </Link>
+              </button>
+              
             </div>
 
             {this.state.message && (

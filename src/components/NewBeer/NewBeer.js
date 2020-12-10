@@ -6,7 +6,6 @@ class NewBeer extends React.Component {
     state = {
         beerName:"",
         beerDescription:"",
-        beerPicture:"",
         beerAlc:"",
         beerVotes:"",
         file: ""
@@ -66,12 +65,6 @@ class NewBeer extends React.Component {
                     <div className="form-group">
                       <textarea
                         placeholder="Enter Beer Description" name='beerDescription' className="form-control" onChange={this.handleChange} value={this.state.beerDescription}
-                      />
-                    </div>
-      
-                    <div className="form-group">
-                      <input
-                        placeholder="Add the beer picture link"  name='beerPicture' className="form-control" onChange={this.handleChange} value={this.state.beerPicture}
                       />
                     </div>
                     
