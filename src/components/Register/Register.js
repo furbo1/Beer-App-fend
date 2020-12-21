@@ -127,11 +127,11 @@ export default class Register extends Component {
         <h2 className="title-form">Register here to order your favorite beers!</h2>
       <div className="col-md-6 inner">
         <div className="card-container-reg">
-          <img
+          {/* <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
             className="profile-img-card"
-          />
+          /> */}
 
           <Form
             onSubmit={this.handleRegister}

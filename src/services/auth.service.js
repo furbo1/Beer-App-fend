@@ -23,13 +23,14 @@ class AuthService {
         localStorage.removeItem("token");
     }
 
-    register(username, email, password){
+    register(username, email, password, role){
         return axios.post(API_URL + "create", {
             username,
             email,
             password
         });
     }
+
     confirmResetPassword(code, email, newPassword){
         return axios.post(API_URL + "confirm-reset-password", {
             code:code,
@@ -38,19 +39,22 @@ class AuthService {
         });
     }
 
-    
-
-    
-
     getCurrentUser(){
         return JSON.parse(localStorage.getItem('user'));
     }
 
-    
+    hasPermission(role){
+        let user = JSON.parse(localStorage.getItem('user'));
+        if(user.role == role) {
+            return true;
+        }
+        return false;
 
+    }
 }
 
 export default new AuthService();
+
 
 export const isAuthenticated = () => {
     let token = JSON.parse(localStorage.getItem('token'));

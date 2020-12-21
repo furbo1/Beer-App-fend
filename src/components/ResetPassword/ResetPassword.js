@@ -38,7 +38,7 @@ class ResetPassword extends React.Component {
   }
   render(){
     return (
-      <div className="">
+      <div className="container">
         <h1>Password reset</h1>
           <Form className="inner">
           

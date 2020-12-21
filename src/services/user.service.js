@@ -12,6 +12,9 @@ export default class UserService {
         return axios.get(API_URL + 'user', {headers: authHeader()})
     }
 
+    
+
+
     confirmResetPassword(code, email, newPassword){
         return axios.post(API_URL + "confirm-reset-password", {
             code:code,

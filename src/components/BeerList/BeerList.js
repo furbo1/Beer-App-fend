@@ -4,6 +4,7 @@ import Beer from '../BeerCard/BeerCard';
 import './BeerList.css';
 import { Link } from 'react-router-dom';
 import BeerCard from '../BeerCard/BeerCard';
+import BeerService from '../../services/beer.service';
 
 
 let infoBeers= "http://localhost:4004/beer/all";
@@ -11,10 +12,15 @@ let infoBeers= "http://localhost:4004/beer/all";
 class BeerList extends React.Component {
     state = {
         beerList:[],
-        filter: ""
+        filter: "",
+        page: 0,
+        size: 10
     }
     componentDidMount(){
-        axios.get(infoBeers)
+        BeerService.getBeers(
+            this.state.page,
+            this.state.size
+        )
         .then(res => {
             this.setState({
                 beerList:res.data,

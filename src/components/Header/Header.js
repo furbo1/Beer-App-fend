@@ -4,7 +4,6 @@ import AuthService from '../../services/auth.service'
 import './Header.css'
 import picture from '../../assets/images/BeerAppLogo.png'
 
-
 class Header extends React.Component{
 
     state = {
@@ -63,9 +62,16 @@ class Header extends React.Component{
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link to={"/addbeer"} className="nav-link" style={{color:'#f5b543'}}>
-                          Add Beer
-                        </Link>
+                        {AuthService.hasPermission('BUSINESS') ? (
+                          <Link to={"/addbeer"} className="nav-link" style={{color:'#f5b543'}}>
+                            Add Beer
+                          </Link>) : null}
+                      </li>
+                      <li className="nav-item">
+                        {AuthService.hasPermission('CLIENT') ? (
+                          <Link to={"/addbeer"} className="nav-link" style={{color:'#f5b543'}}>
+                            My Orders
+                          </Link>) : null}
                       </li>
                       
                       </div>
